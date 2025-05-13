@@ -92,4 +92,9 @@ router.post("/", async (req, res) => {
 	}
 });
 
+router.get('/', (req, res) => {
+    // Je logica voor de POST request
+    res.send('connected!');
+});
+
 module.exports = router;
