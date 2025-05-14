@@ -64,7 +64,8 @@ router.post("/", async (req, res) => {
 
 			if (settings.use.includes("elevenlabs-stream")) {
 				// Construct the URL for the streaming endpoint
-				url = `${req.protocol}://${req.get("host")}/stream-audio`; // req.protocol is 'http' or 'https', req.get('host') is the hostname (with port if needed)
+				// url = `${req.protocol}://${req.get("host")}/stream-audio`; // req.protocol is 'http' or 'https', req.get('host') is the hostname (with port if needed)
+				url = `https://${req.get("host")}/stream-audio`;
 			}
 		} catch (err) {
 			// throw new Error(
@@ -92,9 +93,9 @@ router.post("/", async (req, res) => {
 	}
 });
 
-router.get('/', (req, res) => {
-    // Je logica voor de POST request
-    res.send('connected!');
+router.get("/", (req, res) => {
+	// Je logica voor de POST request
+	res.send("connected!");
 });
 
 module.exports = router;
