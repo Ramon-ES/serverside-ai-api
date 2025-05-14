@@ -65,7 +65,7 @@ router.post("/", async (req, res) => {
 			if (settings.use.includes("elevenlabs-stream")) {
 				// Construct the URL for the streaming endpoint
 				// url = `${req.protocol}://${req.get("host")}/stream-audio`; // req.protocol is 'http' or 'https', req.get('host') is the hostname (with port if needed)
-				url = `https://${req.get("host")}/stream-audio`;
+				url = `https://${req.get("host")}/serverside-ai-api/stream-audio`;
 			}
 		} catch (err) {
 			// throw new Error(
