@@ -39,13 +39,14 @@ router.post("/", async (req, res) => {
 					settings.chatConversation,
 					settings.chatgpt
 				);
+				console.log(assistantMessage)
 			} catch (err) {
 				throw new Error(`ChatGPT response failed: ${err.message}`);
 			}
 			if (settings.chatConversation) {
 				settings.chatConversation.push({
 					role: "assistant",
-					content: assistantMessage,
+					content: JSON.parse(assistantMessage.arguments).response.replaceAll('’', `'`) || assistantMessage.replaceAll('’', `'`),
 				});
 			}
 		}
@@ -57,7 +58,7 @@ router.post("/", async (req, res) => {
 		try {
 			if (settings.use.includes("elevenlabs-fetch")) {
 				audio = await fetchSpeech(
-					assistantMessage || transcript,
+					JSON.parse(assistantMessage.arguments).response || assistantMessage || transcript,
 					settings.elevenlabs
 				);
 			}
