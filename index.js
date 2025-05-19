@@ -7,7 +7,7 @@ const streamRoute = require('./routes/stream-audio');
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: '50mb' }));
-app.use('/process', processRoute);
+app.use('/', processRoute);
 app.use('/stream-audio', streamRoute);
 
 const PORT = process.env.PORT || 3001;
